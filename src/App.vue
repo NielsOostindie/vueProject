@@ -1,65 +1,78 @@
 <template>
   <div class="container">
-  <Header title="Task Tracker" />
-  <Tasks @delete-task="deleteTask" :tasks="tasks"/>
+    <Header title="Task Tracker" />
+    <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Tasks from './components/Tasks.vue'
+import { remove } from "@vue/shared";
+import Header from "./components/Header.vue";
+import Tasks from "./components/Tasks.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
     Tasks,
   },
-  data(){
-    return{
-      tasks: []
-    }
+  data() {
+    return {
+      tasks: [],
+    };
   },
 
   methods: {
-    deleteTask(id){
-      this.tasks = this.tasks.filter((task) => task.id !== id)
+    deleteTask(id) {
+      if (confirm("Are you sure?")) {
+        this.tasks = this.tasks.filter((task) => task.id !== id);
+      }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      );
     },
   },
   created() {
     this.tasks = [
       {
         id: 1,
-        text: 'Docters Appiontment',
-        day: 'March 1st at 2:30pm',
+        text: "Docters Appiontment",
+        day: "March 1st at 2:30pm",
         reminder: true,
       },
       {
         id: 2,
-        text: 'Meeting at School',
-        day: 'March 3rd at 2:30pm',
+        text: "Meeting at School",
+        day: "March 3rd at 2:30pm",
         reminder: true,
       },
       {
         id: 3,
-        text: 'Food Shopping',
-        day: 'March 3rd at 11:00am',
+        text: "Food Shopping",
+        day: "March 3rd at 11:00am",
         reminder: false,
       },
-    ]
-  }
-}
+    ];
+  },
+};
 </script>
 
-<style >
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 body {
-  font-family: 'Poppins', sans-serif;
+  -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+  font-family: "Poppins", sans-serif;
 }
 .container {
   max-width: 500px;
