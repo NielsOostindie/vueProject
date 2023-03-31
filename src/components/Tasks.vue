@@ -1,5 +1,8 @@
 <template>
-  <div :key="task.id" v-for="task in tasks">
+  <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false">
+   <div v-for="element in myArray" :key="element.id">{{element.name}}</div>
+</draggable>
+    <div :key="task.id" v-for="task in tasks">
     <Task
       @toggle-reminder="$emit('toggle-reminder', task.id)"
       @delete-task="this.$emit('delete-task', task.id)"
@@ -17,6 +20,7 @@ export default {
     tasks: Array,
   },
   components: {
+
     Task,
   },
 
@@ -24,4 +28,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

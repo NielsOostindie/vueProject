@@ -34,6 +34,7 @@ export default {
   methods: {
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
+
     },
 
     addTask(task) {
@@ -79,6 +80,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -109,7 +111,6 @@ body {
   padding: 10px 20px;
   margin: 5px;
   border-radius: 5px;
-  cursor: pointer;
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
