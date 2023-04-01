@@ -21,6 +21,9 @@ export default {
 </script>
 
 <style scoped>
+*{
+    z-index: 1;
+}
 .fas {
   color: red;
 }

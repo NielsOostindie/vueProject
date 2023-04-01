@@ -1,7 +1,4 @@
 <template>
-  <draggable v-model="myArray" group="people" @start="drag=true" @end="drag=false">
-   <div v-for="element in myArray" :key="element.id">{{element.name}}</div>
-</draggable>
     <div :key="task.id" v-for="task in tasks">
     <Task
       @toggle-reminder="$emit('toggle-reminder', task.id)"
@@ -29,4 +26,7 @@ export default {
 </script>
 
 <style scoped>
+*{
+    z-index: 1;
+}
 </style>
