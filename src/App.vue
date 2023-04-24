@@ -9,6 +9,7 @@
       <AddTask v-show="showAddTask" @add-task="addTask" />
     </div>
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
+    <TaskInfo @edit-task="editTask" />
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 import Header from "./components/Header.vue";
 import Tasks from "./components/Tasks.vue";
 import AddTask from "./components/AddTask.vue";
+// import TaskInfo from "./components/TaskInfo.vue";
 
 export default {
   name: "App",
@@ -23,6 +25,7 @@ export default {
     Header,
     Tasks,
     AddTask,
+    // TaskInfo,
   },
   data() {
     return {
@@ -32,6 +35,7 @@ export default {
   },
 
   methods: {
+
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
